@@ -1,0 +1,13 @@
+{
+  "name": "engineering-standards",
+  "owner": {
+    "name": "Engineering Standards Contributors"
+  },
+  "plugins": [
+    {
+      "name": "engineering-standards",
+      "source": "./plugins/engineering-standards",
+      "description": "Padrão de engenharia para desenvolvimento, segurança, banco de dados e documentação, com extensão para o ecossistema Sankhya."
+    }
+  ]
+}

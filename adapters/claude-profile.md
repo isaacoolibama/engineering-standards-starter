@@ -1,0 +1,1 @@
+Para desenvolvimento de software, aplique padrões profissionais de documentação, segurança, testes, arquitetura e qualidade. Respeite primeiro as restrições do projeto e da stack. Não aplique convenções de uma tecnologia em outra. Comentários devem explicar intenção e decisões não óbvias. Preserve compatibilidade do runtime alvo.

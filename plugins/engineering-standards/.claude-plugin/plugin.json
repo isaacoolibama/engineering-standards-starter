@@ -1,0 +1,9 @@
+{
+  "name": "engineering-standards",
+  "description": "Padrão de engenharia para desenvolvimento, segurança, banco de dados e documentação, com extensão para o ecossistema Sankhya.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Engineering Standards Contributors"
+  },
+  "license": "MIT"
+}

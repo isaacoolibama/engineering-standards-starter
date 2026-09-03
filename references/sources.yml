@@ -1,0 +1,99 @@
+version: 1
+sources:
+  governance:
+    - name: RFC 2119
+      url: https://www.rfc-editor.org/rfc/rfc2119
+    - name: RFC 8174
+      url: https://www.rfc-editor.org/rfc/rfc8174
+  lifecycle_quality:
+    - name: ISO/IEC/IEEE 12207
+      url: https://www.iso.org/standard/90219.html
+    - name: ISO/IEC/IEEE 29148
+      url: https://www.iso.org/standard/72089.html
+    - name: ISO/IEC/IEEE 42010
+      url: https://www.iso.org/standard/74393.html
+    - name: ISO/IEC 25010
+      url: https://www.iso.org/standard/78176.html
+  documentation:
+    - name: Diataxis
+      url: https://diataxis.fr/
+    - name: Google Developer Documentation Style Guide
+      url: https://developers.google.com/style
+    - name: arc42
+      url: https://arc42.org/
+    - name: C4 Model
+      url: https://c4model.com/
+    - name: ADR
+      url: https://adr.github.io/
+  security:
+    - name: NIST SSDF SP 800-218
+      url: https://csrc.nist.gov/pubs/sp/800/218/final
+    - name: OWASP ASVS
+      url: https://owasp.org/www-project-application-security-verification-standard/
+    - name: OWASP Cheat Sheet Series
+      url: https://cheatsheetseries.owasp.org/
+    - name: OpenSSF
+      url: https://openssf.org/
+    - name: SLSA
+      url: https://slsa.dev/
+  supply_chain:
+    - name: SPDX
+      url: https://spdx.dev/
+    - name: CycloneDX
+      url: https://cyclonedx.org/
+  api:
+    - name: OpenAPI
+      url: https://spec.openapis.org/oas/latest.html
+    - name: AsyncAPI
+      url: https://www.asyncapi.com/docs/reference/specification/latest
+    - name: JSON Schema
+      url: https://json-schema.org/specification
+  web:
+    - name: WHATWG HTML
+      url: https://html.spec.whatwg.org/
+    - name: WCAG 2.2
+      url: https://www.w3.org/TR/WCAG22/
+    - name: MDN
+      url: https://developer.mozilla.org/
+  languages:
+    - name: Python PEP 8
+      url: https://peps.python.org/pep-0008/
+    - name: Python PEP 257
+      url: https://peps.python.org/pep-0257/
+    - name: Google Java Style Guide
+      url: https://google.github.io/styleguide/javaguide.html
+    - name: Rust API Guidelines
+      url: https://rust-lang.github.io/api-guidelines/
+    - name: Go Code Review Comments
+      url: https://go.dev/wiki/CodeReviewComments
+    - name: C++ Core Guidelines
+      url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.html
+  oracle:
+    - name: Oracle Database PL/SQL Language Reference
+      url: https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/
+    - name: PL/SQL and SQL Coding Guidelines (fork comunitario do guia Trivadis)
+      url: https://primus-delphi-group.github.io/PLSQL_SQL-Coding-Guidelines/
+      note: >-
+        Guia secundario. O repositorio original da Trivadis foi arquivado e seu
+        site saiu do ar; este fork mantem o conteudo. Fonte primaria continua
+        sendo a documentacao Oracle.
+  sankhya:
+    - name: Sankhya Developer - Jape
+      url: https://developer.sankhya.com.br/docs/jape
+    - name: Sankhya Developer - Rotina Java
+      url: https://developer.sankhya.com.br/docs/rotina-java
+    - name: Sankhya Developer - Regras de Negocio
+      url: https://developer.sankhya.com.br/docs/06_business_rules
+    - name: Sankhya Developer - Action Button
+      url: https://developer.sankhya.com.br/docs/05_action_button
+    - name: Sankhya Developer - Service
+      url: https://developer.sankhya.com.br/docs/09_service
+    - name: Sankhya Developer - Controle Transacional
+      url: https://developer.sankhya.com.br/docs/controle-transacional
+    - name: Sankhya Swagger
+      url: http://swagger.sankhya.com.br/swagger.json
+      note: >-
+        Publicado apenas em HTTP; nao ha versao HTTPS. Nao transmitir credencial
+        para esse host.
+    - name: Sankhya Tabelas
+      url: http://swagger.sankhya.com.br/tabelas/?C=N;O=A
