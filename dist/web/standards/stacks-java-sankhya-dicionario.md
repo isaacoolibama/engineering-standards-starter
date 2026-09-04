@@ -57,11 +57,25 @@ SELECT NOMELIGACAO, TIPLIGACAO, NUINSTORIG, NUINSTDEST, OBRIGATORIA
     OR NUINSTDEST = :instancia;
 ```
 
+## Quando não há banco para consultar
+
+Assistente web não abre conexão com o ERP. Para esses casos o dicionário pode ser
+exportado do banco e anexado ao contexto como arquivo — `scripts/build-dicionario.py`
+gera o pacote, e `INSTALL.md` descreve o procedimento.
+
+O pacote exportado substitui a consulta ao banco apenas para os campos que ele contém.
+Ele cobre o produto; customizações da instalação ficam de fora por decisão de
+confidencialidade. Campo ausente do pacote MUST ser tratado como não confirmado, não
+como inexistente — a regra da ordem de decisão abaixo continua valendo.
+
 ## Campo padrão × campo customizado
 
 - `ADICIONAL = 'S'` e campos com prefixo `AD_` são **customizações daquela instalação**.
 - Tabelas com prefixo `AD_` são customizadas.
 - Tabelas com prefixo de sigla da empresa também são customizadas.
+- **Campo** com a sigla da empresa no nome também é customizado, mesmo dentro de tabela
+  padrão e mesmo sem `AD_` — `TGFCAB.<SIGLA>CODEMPAUT`, `TGFCAB_<SIGLA>`. Nesse caso
+  `ADICIONAL` pode vir `'N'`, e só o nome denuncia a origem.
 
 Consequência prática:
 

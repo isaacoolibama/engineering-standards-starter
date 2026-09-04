@@ -44,6 +44,7 @@ Assistentes de IA escrevem código plausível, não código correto. No Sankhya 
 dist/core.md        núcleo condensado, para campos de instrução
 dist/claude-rules/  regras por linguagem do Claude Code (geradas)
 dist/web/           pacote para Projects e GPTs (gerado)
+dist/local/         dicionário da instalação (gerado, não versionado)
 governance/      níveis de requisito, hierarquia, exceções
 security/        desenvolvimento seguro, segredos, threat modeling
 quality/         qualidade de código

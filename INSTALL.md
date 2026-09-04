@@ -190,8 +190,19 @@ Os nomes dos menus mudam com o tempo; o caminho geral se mantém.
 
 ### Passo 1 — gerar o pacote web
 
+Um comando faz tudo — documentos, dicionário e validação — e imprime no fim o que
+subir e o que não subir:
+
 ```bash
-python3 scripts/build-web.py
+scripts/preparar-web.sh
+```
+
+Se preferir rodar as etapas separadas, é isto que ele executa:
+
+```bash
+python3 scripts/build-web.py         # documentos do padrão
+python3 scripts/build-dicionario.py  # dicionário Sankhya, se houver o CSV
+scripts/validate.sh                  # impede publicar customização por engano
 ```
 
 | Saída | O que é | Quando usar |
@@ -211,6 +222,33 @@ vira prefixo (`backend-standard.md`, `stacks-java-sankhya-jape.md`).
 **Não suba `dist/claude-rules/` nem `plugins/*/rules/`.** São cópias derivadas dos mesmos
 documentos, geradas para o Claude Code, com frontmatter `paths:` que só ele interpreta.
 Subir os dois conjuntos duplica o padrão dentro do knowledge base.
+
+#### Dicionário de dados Sankhya (opcional)
+
+Sem banco à mão, o assistente web não tem como confirmar nome de tabela ou campo — e o
+padrão manda declarar "não confirmei" em vez de chutar. Para tornar a confirmação
+possível na web, exporte o dicionário da instalação e gere o pacote:
+
+```bash
+# a query de exportação está em dist/web/dicionario/sankhya-dicionario-README.md
+python3 scripts/build-dicionario.py            # lê sankhya-dicionario-instalacao.csv
+```
+
+| Saída | Conteúdo | Destino |
+|---|---|---|
+| `dist/web/dicionario/` | campos do produto, um arquivo por módulo | knowledge base |
+| `dist/local/` | campos customizados da instalação | **não publicar** |
+
+A separação é de confidencialidade. `dist/local/` e o CSV bruto estão no `.gitignore`,
+e o `scripts/validate.sh` falha se algum deles for versionado — customização exposta em
+repositório público fica no histórico para sempre.
+
+Na primeira execução o script cria `dist/local/dicionario-prefixos.conf`, que classifica
+cada prefixo de tabela como `publico` ou `privado`. **Revise esse arquivo antes de subir
+o pacote:** prefixo desconhecido e prefixo com poucas tabelas nascem privados, porque
+personalização costuma ter esse formato. A linha `marcador SIGLA` retém tabela ou campo
+que carregue a sigla da empresa mesmo dentro de tabela padrão do produto — é o caso que
+a coluna `CUSTOMIZADO` da exportação não acusa.
 
 ### Passo 2 — escolher o texto de instruções
 
@@ -322,10 +360,11 @@ Se nada disso aconteceu, o texto não está sendo carregado — confira se salvo
 Antes de publicar qualquer alteração no padrão:
 
 ```bash
-python3 scripts/build-rules.py   # regenera as regras do Claude Code
-python3 scripts/build-web.py     # regenera o pacote das IAs web
-scripts/validate.sh              # estrutura + links internos
-LINK_CHECK=1 scripts/validate.sh # inclui checagem HTTP de todas as fontes
+python3 scripts/build-rules.py      # regenera as regras do Claude Code
+python3 scripts/build-web.py        # regenera o pacote das IAs web
+python3 scripts/build-dicionario.py # regenera o dicionário Sankhya (se houver CSV)
+scripts/validate.sh                 # estrutura, links internos e vazamento de dicionário
+LINK_CHECK=1 scripts/validate.sh    # inclui checagem HTTP de todas as fontes
 ```
 
 Fonte que sai do ar deve ser substituída, não mantida quebrada — foi o que aconteceu com o guia Trivadis de PL/SQL, arquivado e removido do ar.

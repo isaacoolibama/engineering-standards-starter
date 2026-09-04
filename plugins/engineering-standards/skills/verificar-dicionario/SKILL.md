@@ -47,12 +47,18 @@ SELECT NOMELIGACAO, TIPLIGACAO, NUINSTORIG, NUINSTDEST, OBRIGATORIA
 - `ADICIONAL = 'S'` ou prefixo `AD_`: campo **customizado daquela instalação**.
   Código que dependa dele MUST declarar essa dependência na documentação da rotina.
   Exemplo compartilhado publicamente MUST NOT citar campo customizado.
+- Sigla da empresa no nome do campo ou da tabela (`TGFCAB_<SIGLA>`,
+  `TGFCAB.<SIGLA>CODEMPAUT`): também é customização, mesmo com `ADICIONAL = 'N'` e sem
+  prefixo `AD_`.
 - `CALCULADO = 'S'`: campo calculado, não persistido como coluna comum.
 
 ## Procedimento
 
 1. Use a conexão de banco já configurada no projeto. Não peça credencial que já exista.
-2. Se não houver acesso ao banco, pergunte ao usuário.
-3. Se não puder perguntar, escreva o código marcando explicitamente cada nome não
+2. Sem banco, procure um dicionário exportado no contexto — arquivos
+   `sankhya-dicionario-*.md` gerados por `scripts/build-dicionario.py`. Ele cobre os
+   campos do produto; ausência ali é **não confirmado**, não "não existe".
+3. Se não houver nem banco nem dicionário exportado, pergunte ao usuário.
+4. Se não puder perguntar, escreva o código marcando explicitamente cada nome não
    confirmado como pendente de validação.
-4. Nunca invente.
+5. Nunca invente.

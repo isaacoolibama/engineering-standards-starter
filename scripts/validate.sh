@@ -24,6 +24,15 @@ if grep -RniE --exclude='validate.sh' --exclude-dir='.git' 'JSF Florestal|JSF Em
   exit 1
 fi
 
+# O dicionario da instalacao contem campos customizados e a sigla da organizacao.
+# Se algum deles for versionado por engano, o vazamento e permanente no historico.
+versionados="$(git ls-files -- dist/local 'sankhya-dicionario-instalacao.csv')"
+if [[ -n "$versionados" ]]; then
+  echo "ERROR: dicionario da instalacao versionado:" >&2
+  echo "$versionados" >&2
+  exit 1
+fi
+
 python -c "from pathlib import Path; t=Path('references/sources.yml').read_text(encoding='utf-8'); assert 'sources:' in t and 'sankhya:' in t and 'security:' in t; print('sources.yml: structural check OK')"
 
 # Links: internos sempre; externos so quando LINK_CHECK=1 (evita depender de rede no uso local).
