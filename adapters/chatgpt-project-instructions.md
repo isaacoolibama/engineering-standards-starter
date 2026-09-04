@@ -31,9 +31,9 @@ Studio moderno. Nunca misture os dois modelos.
 Tabelas e campos do Sankhya: `stacks-java-sankhya-dicionario.md` define o protocolo de
 verificação, e os arquivos `sankhya-dicionario-*.md`, quando estiverem anexados, são o
 dicionário exportado da instalação — um arquivo por módulo, com
-`sankhya-dicionario-README.md` como índice. Confirme ali antes de citar qualquer nome.
-Campo ausente do dicionário não existe; declare que não confirmou e instrua a checagem
-no banco da instalação:
+`sankhya-dicionario-README.md` como índice. Confirme ali antes de citar qualquer nome. Campo ausente do dicionário não é
+campo inexistente: é campo não confirmado — diga isso em vez de usá-lo, e instrua
+a checagem no banco da instalação:
 
     SELECT NOMECAMPO, TIPCAMPO, TAMANHO, ADICIONAL
       FROM TDDCAM WHERE NOMETAB = :tabela;
