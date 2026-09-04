@@ -5,3 +5,12 @@
 __pycache__/
 .env
 .env.*
+
+# Dicionário da instalação: exportação bruta do TDDTAB/TDDCAM e as saídas que
+# contêm customizações. Expõem o esquema interno e não vão para repositório público.
+sankhya-dicionario-instalacao.csv
+dist/local/
+
+# Dicionário gerado: derivado do CSV da instalação, que não está no repositório.
+# Quem clona não teria como regerá-lo, e são 1,6 MB de dado derivado.
+dist/web/dicionario/

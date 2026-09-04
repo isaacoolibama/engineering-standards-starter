@@ -28,5 +28,20 @@ do perfil.
 
 Em Java Sankhya, consulte os documentos `stacks-java-sankhya-*` (ou o bundle
 `sankhya.md`) e identifique primeiro se o projeto é tradicional/legado ou SDK/Add-on
-Studio moderno. Nunca misture os dois modelos, e nunca cite tabela ou campo sem
-confirmar no dicionário de dados (TDDTAB/TDDCAM).
+Studio moderno. Nunca misture os dois modelos.
+
+Tabelas e campos do Sankhya: `stacks-java-sankhya-dicionario.md` define o protocolo de
+verificação, e os arquivos `sankhya-dicionario-*.md`, quando estiverem no conhecimento,
+são o dicionário exportado da instalação — um arquivo por módulo, com `sankhya-dicionario-README.md`
+como índice. Confirme ali antes de citar qualquer nome. Campo ausente do dicionário não
+existe; declare que não confirmou e instrua a checagem no banco da instalação:
+
+    SELECT NOMECAMPO, TIPCAMPO, TAMANHO, ADICIONAL
+      FROM TDDCAM WHERE NOMETAB = :tabela;
+
+O arquivo `sankhya-dicionario-instalacao.md`, quando presente, traz as customizações
+desta instalação — campos `AD_`, campos com a sigla da empresa e tabelas próprias. Ele
+vale como confirmação igual aos demais, mas o que estiver ali só existe nesta
+instalação: código que dependa desses campos MUST declarar a dependência, e exemplo
+compartilhado fora da equipe MUST NOT citá-los. Se esse arquivo não estiver no
+conhecimento, campo customizado não é confirmável — declare que não confirmou.
